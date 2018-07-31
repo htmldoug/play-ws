@@ -108,6 +108,14 @@ class AhcWSRequestSpec extends Specification with Mockito with AfterAll with Def
 
     }
 
+    "define what to do about URLs with query params" in {
+      withClient { client =>
+        val request = client.url("http://example.com?pipe=|")
+        val uri = request.uri
+        uri.toString must beEqualTo("http://example.com")
+        request.queryString("pipe") must beEqualTo("|")
+      }
+    }
   }
 
   "For Cookies" in {
