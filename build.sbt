@@ -55,8 +55,7 @@ def scalacOpts: Seq[String] =
 
 lazy val mimaSettings = Seq(
   mimaPreviousArtifacts := Set(
-    organization.value %% name.value % previousStableVersion.value
-      .getOrElse(throw new Error("Unable to determine previous version"))
+    organization.value %% name.value % "2.0.0"
   ),
   // these exclusions are only for master branch and are targeting 2.2.x
   mimaBinaryIssueFilters ++= Seq(
